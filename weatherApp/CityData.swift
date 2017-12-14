@@ -13,3 +13,6 @@ class  CityData {
     
     var cities = [City(cityName: "London", countryName: "United Kingdom"),City(cityName: "Kyiv", countryName: "Ukraine"),City(cityName: "Madrid", countryName: "Spain"),City(cityName: "Kathmandu", countryName: "Nepal"),City(cityName: "Astana", countryName: "Kazakhstan")]
 }
+
+
+

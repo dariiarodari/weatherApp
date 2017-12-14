@@ -10,19 +10,17 @@ import UIKit
 
 class CitySearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
     
-
-    
     @IBOutlet weak var cityTableView: UITableView!
     
     let searchController = UISearchController(searchResultsController: nil)
-//    private var filteredCities = [City]()
     
-    
+    private var filteredCities = [City]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
         
         cityTableView.tableHeaderView = searchController.searchBar
         
@@ -32,21 +30,23 @@ class CitySearchViewController: UIViewController, UITableViewDelegate, UITableVi
         cityTableView.register(UINib(nibName: "CityWeatherCell", bundle: nil), forCellReuseIdentifier: "CityWeatherCell")
         
         cityTableView.tableFooterView = UIView()
-
+        
+        self.filteredCities = CityData.shared.cities
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CityData.shared.cities.count
+        return filteredCities.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cityCell = cityTableView.dequeueReusableCell(withIdentifier: "CityWeatherCell", for: indexPath) as! CityWeatherCell
         
-        let city = CityData.shared.cities[indexPath.row]
+        let city = filteredCities[indexPath.row]
         
         cityCell.configure(with: city)
         
@@ -59,8 +59,29 @@ class CitySearchViewController: UIViewController, UITableViewDelegate, UITableVi
     
     
     // MARK: - Search bar updater
+    
     func updateSearchResults(for searchController: UISearchController) {
-        print(searchController.searchBar.text)
+        guard let lowerCasedQuery = searchController.searchBar.text?.lowercased() else { return }
+        
+        if lowerCasedQuery == "" {
+            if filteredCities.count != CityData.shared.cities.count {
+            
+            filteredCities = CityData.shared.cities
+            cityTableView.reloadSections([0], with: UITableViewRowAnimation.none)
+        }
+        
+    } else {
+    
+    let filtered = CityData.shared.cities.filter { city -> Bool in
+    let lowerCasedCityName = city.cityName.lowercased()
+    
+    return lowerCasedCityName.contains(lowerCasedQuery)
     }
+    
+    filteredCities = filtered
+    cityTableView.reloadSections([0], with: UITableViewRowAnimation.fade)
+    
+    }
+}
 
 }

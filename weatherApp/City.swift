@@ -12,3 +12,11 @@ struct City {
     let cityName: String
     let countryName: String
 }
+
+//extension City {
+//    static func == (lhs: City, rhs: City) -> Bool {
+//        return lhs.cityName == rhs.cityName &&
+//            lhs.countryName == rhs.countryName
+//    }
+//}
+
