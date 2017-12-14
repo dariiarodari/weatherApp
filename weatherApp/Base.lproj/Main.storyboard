@@ -1,24 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3yT-ca-PtY">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--City Search View Controller-->
+        <scene sceneID="Ykf-7O-UpV">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <viewController id="3yT-ca-PtY" customClass="CitySearchViewController" customModule="weatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Eqz-8F-qDd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="h2Y-Nr-h6W">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ygF-eP-VEv" firstAttribute="bottom" secondItem="h2Y-Nr-h6W" secondAttribute="bottom" id="Gaa-51-BA1"/>
+                            <constraint firstItem="h2Y-Nr-h6W" firstAttribute="top" secondItem="ygF-eP-VEv" secondAttribute="top" id="idY-PG-Lar"/>
+                            <constraint firstItem="h2Y-Nr-h6W" firstAttribute="leading" secondItem="ygF-eP-VEv" secondAttribute="leading" id="lKG-8V-o4g"/>
+                            <constraint firstItem="ygF-eP-VEv" firstAttribute="trailing" secondItem="h2Y-Nr-h6W" secondAttribute="trailing" id="p68-Pf-Pya"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ygF-eP-VEv"/>
                     </view>
+                    <connections>
+                        <outlet property="cityTableView" destination="h2Y-Nr-h6W" id="2be-oh-JE3"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DlS-6t-gJ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-766" y="114"/>
+        </scene>
+        <!--Main Weather View Controller-->
+        <scene sceneID="91S-pA-yJy">
+            <objects>
+                <viewController id="L4Q-Ty-fvg" customClass="MainWeatherViewController" customModule="weatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4S7-bx-4sP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eGE-Va-nh4">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="St9-L6-4bt" firstAttribute="trailing" secondItem="eGE-Va-nh4" secondAttribute="trailing" id="Ihq-hS-yuJ"/>
+                            <constraint firstItem="eGE-Va-nh4" firstAttribute="leading" secondItem="St9-L6-4bt" secondAttribute="leading" id="YgC-To-z5f"/>
+                            <constraint firstItem="eGE-Va-nh4" firstAttribute="top" secondItem="St9-L6-4bt" secondAttribute="top" id="uNe-ef-xIs"/>
+                            <constraint firstItem="St9-L6-4bt" firstAttribute="bottom" secondItem="eGE-Va-nh4" secondAttribute="bottom" id="vSs-iU-0iZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="St9-L6-4bt"/>
+                    </view>
+                    <connections>
+                        <outlet property="MainWeatherForecastTableView" destination="eGE-Va-nh4" id="dc4-dA-S3c"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="srZ-GG-feS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="125"/>
         </scene>
     </scenes>
 </document>
